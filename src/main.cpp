@@ -6,13 +6,14 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 13:30:00 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/10 14:02:19 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/10 15:42:08 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "../include/define.h"
 #include "../include/parser/Parser.hpp"
+#include "../include/server/Server.hpp"
 
 using std::cout;
 using std::string;

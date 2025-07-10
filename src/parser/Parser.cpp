@@ -6,12 +6,12 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 12:18:00 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/10 14:02:07 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/10 14:43:51 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parser/Parser.hpp"
-#include "../include/define.h"
+#include "../../include/parser/Parser.hpp"
+#include "../../include/define.h"
 
 Parser::Parser(void):_confPath(DEFAULT_CONFIG){}
 

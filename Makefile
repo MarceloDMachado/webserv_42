@@ -1,6 +1,7 @@
 W_FLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = webserver
-SRC = main.cpp Parser.cpp
+# SRC = main.cpp parser/Parser.cpp
+SRC = $(shell find ./src -name '*.cpp')
 SRC_PATH = ./src/
 INC = -I ./inc/
 OBJ = $(SRC:.cpp=.o)
@@ -10,7 +11,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	c++ $(W_FLAGS) -o $(NAME) $(OBJ) $(INC)
 
-%.o: $(SRC_PATH)%.cpp
+%.o: %.cpp
 	c++ $(W_FLAGS) -c $< -o $@ $(INC)
 
 clean:

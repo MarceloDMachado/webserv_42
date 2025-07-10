@@ -1,6 +1,6 @@
 W_FLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = webserver
-SRC = main.cpp
+SRC = main.cpp Parser.cpp
 SRC_PATH = ./src/
 INC = -I ./inc/
 OBJ = $(SRC:.cpp=.o)

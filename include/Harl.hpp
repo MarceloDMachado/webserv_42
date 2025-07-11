@@ -1,37 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Parser.hpp                                         :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/10 12:09:59 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/11 19:15:44 by madias-m         ###   ########.fr       */
+/*   Created: 2025/05/06 20:46:59 by madias-m          #+#    #+#             */
+/*   Updated: 2025/07/11 19:08:50 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_HPP
-# define PARSER_HPP
+#ifndef HARL_HPP
+# define HARL_HPP
 
-#include <string>
 #include <iostream>
-#include <fstream>
-#include "Harl.hpp"
+#include <string>
 #include "define.h"
 
-class Parser
+enum		levels {DEBUG, INFO, WARNING, ERROR};
+
+class Harl
 {
-	private:
-		std::string	_confPath;
-		std::fstream	_confFile;
-		void			openFile(void);
-		Parser(void);
+    private:
+        std::string _msg;
+        levels		_level;
+        void		debug(void);
+        void		info(void);
+        void		warning(void);
+        void		error(void);
 	public:
-		Parser(int argc, char **argv);
-		Parser(const Parser& other);
-		Parser&			operator=(const Parser& other);
-		~Parser(void);
-		void	doParsing(void);
+        Harl(std::string msg);
+		Harl(std::string msg, levels level);
+        void    complain();
+		void	setMsg(std::string msg);
+		void	setLevel(levels level);
 };
 
 #endif

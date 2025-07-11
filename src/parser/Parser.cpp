@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 12:18:00 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/11 15:31:06 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/11 15:52:05 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 
 Parser::Parser(void):_confPath(DEFAULT_CONFIG){}
 
-Parser::Parser(std::string confPath)
+Parser::Parser(int argc, char **argv):_confPath(DEFAULT_CONFIG)
 {
-	this->_confPath = confPath;
+	if (argc == 1)
+		std::cout << "No config file passed by args. Using default config\n";
+	else
+		this->_confPath = argv[1];
 }
 
 Parser::Parser(const Parser& other)

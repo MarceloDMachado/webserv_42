@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 12:09:59 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/10 14:52:55 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/11 15:50:25 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Parser
 		void			openFile(void);
 	public:
 		Parser(void);
-		Parser(std::string confPath);
+		Parser(int argc, char **argv);
 		Parser(const Parser& other);
 		Parser&			operator=(const Parser& other);
 		~Parser(void);

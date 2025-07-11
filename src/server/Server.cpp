@@ -6,11 +6,11 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:36:09 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/10 15:41:26 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/11 15:28:31 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/server/Server.hpp"
+#include "../../include/Server.hpp"
 
 Server::Server(void){};
 

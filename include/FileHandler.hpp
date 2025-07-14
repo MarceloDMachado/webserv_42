@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Parser.hpp                                         :+:      :+:    :+:   */
+/*   FileHandler.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/10 12:09:59 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/14 14:52:59 by madias-m         ###   ########.fr       */
+/*   Created: 2025/07/14 14:11:02 by madias-m          #+#    #+#             */
+/*   Updated: 2025/07/14 15:35:35 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_HPP
-# define PARSER_HPP
+#ifndef FILEHANDLER__HPP
+# define FILEHANDLER__HPP
 
-#include <string>
-#include <iostream>
 #include <fstream>
+#include <cstring>
+#include <map>
 #include "Harl.hpp"
-#include "define.h"
-#include "FileHandler.hpp"
 
-class Parser
+class FileHandler
 {
 	private:
-		std::string		_confPath;
-		FileHandler		_confFile;
-		void			openFile(void);
-		Parser(void);
+		std::string					_path;
+		std::fstream				_file;
+		std::map<int, std::string>	_lineByNumberMap;
+		void						readFile(void);
 	public:
-		Parser(int argc, char **argv);
-		Parser(const Parser& other);
-		Parser&			operator=(const Parser& other);
-		~Parser(void);
-		void	doParsing(void);
+		FileHandler(void);
+		FileHandler(std::string path);
+		FileHandler(const FileHandler& other);
+		FileHandler&	operator=(const FileHandler& other);
+		~FileHandler(void);
+		void						openFile(void);
+		void						setPath(std::string path);
 };
 
 #endif

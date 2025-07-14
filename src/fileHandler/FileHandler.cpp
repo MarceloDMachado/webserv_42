@@ -1,0 +1,68 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   FileHandler.cpp                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/14 14:18:09 by madias-m          #+#    #+#             */
+/*   Updated: 2025/07/14 15:47:30 by madias-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../include/FileHandler.hpp"
+
+FileHandler::FileHandler(void){}
+
+FileHandler::FileHandler(std::string path)
+{
+	setPath(path);
+}
+
+FileHandler::FileHandler(const FileHandler& other)
+{
+	*this = other;
+}
+
+FileHandler&	FileHandler::operator=(const FileHandler& other)
+{
+	if (this != &other)
+	{
+		setPath(other._path);
+	}
+	return (*this);
+}
+
+FileHandler::~FileHandler(void)
+{
+	
+}
+
+void	FileHandler::openFile(void)
+{
+	this->_file.open(this->_path.c_str());
+	if (!this->_file.is_open())
+		Harl("Could not open the file [_path]", ERROR).complain();
+	readFile();
+}
+
+void	FileHandler::readFile(void)
+{
+	std::string	line;
+	int			line_num;
+	
+	if (!this->_file.is_open())
+		Harl("Could not read from file [_path]", ERROR).complain();
+	line_num = 1;
+	while (std::getline(this->_file, line))
+	{
+		this->_lineByNumberMap.insert(std::make_pair(line_num++, line));
+		Harl(line, DEBUG).complain();
+	}
+	this->_file.close();
+}
+
+void	FileHandler::setPath(std::string path)
+{
+	this->_path = path;
+}

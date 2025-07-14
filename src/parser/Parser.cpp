@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 12:18:00 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/11 19:17:34 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/14 15:36:25 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,13 @@ Parser&			Parser::operator=(const Parser& other)
 	return (*this);
 }
 
-Parser::~Parser(void)
-{
-	this->_confFile.close();
-}
+Parser::~Parser(void) {}
 
 void	Parser::openFile(void)
 {
-	this->_confFile.open(this->_confPath.c_str());
-	if (this->_confFile.is_open())
-		Harl("File is open", INFO).complain();
-	else
-		Harl("Could not open the file", ERROR).complain();
+	this->_confFile.setPath(this->_confPath);
+	this->_confFile.openFile();
 }
-
 void	Parser::doParsing(void)
 {
 	openFile();

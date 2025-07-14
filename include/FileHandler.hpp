@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 14:11:02 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/14 15:35:35 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/14 16:03:31 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ class FileHandler
 		FileHandler(const FileHandler& other);
 		FileHandler&	operator=(const FileHandler& other);
 		~FileHandler(void);
+		std::map<int, std::string>	getContent(void) const;
 		void						openFile(void);
 		void						setPath(std::string path);
 };

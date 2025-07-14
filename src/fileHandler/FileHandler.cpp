@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 14:18:09 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/14 15:50:07 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/14 16:03:28 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,11 @@ void	FileHandler::readFile(void)
 		Harl(line, DEBUG).complain(); // Remover
 	}
 	this->_file.close();
+}
+
+std::map<int, std::string>	FileHandler::getContent(void) const
+{
+	return (this->_lineByNumberMap);
 }
 
 void	FileHandler::setPath(std::string path)

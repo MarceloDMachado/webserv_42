@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 14:18:09 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/14 15:47:30 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/14 15:50:07 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ FileHandler::FileHandler(const FileHandler& other)
 FileHandler&	FileHandler::operator=(const FileHandler& other)
 {
 	if (this != &other)
-	{
 		setPath(other._path);
-	}
 	return (*this);
 }
 
@@ -57,7 +55,7 @@ void	FileHandler::readFile(void)
 	while (std::getline(this->_file, line))
 	{
 		this->_lineByNumberMap.insert(std::make_pair(line_num++, line));
-		Harl(line, DEBUG).complain();
+		Harl(line, DEBUG).complain(); // Remover
 	}
 	this->_file.close();
 }

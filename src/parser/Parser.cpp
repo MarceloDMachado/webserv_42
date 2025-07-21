@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 12:18:00 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/21 17:08:43 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/21 17:37:24 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,38 @@ void	Parser::openFile(void)
 
 void	Parser::checkFileContent(void)
 {
+	int		index;
 	bool	(*checkFunctions[])(std::string) = {
 		hasDuplicatedSpecialTokens,
 		isMissingTokens
 	};
-	int		index;
-
+	
 	this->_checkResult = true;
 	index = 0;
 	while (index < 2)
 		if (!check(this->_fileContent, checkFunctions[index++]))
 			this->_checkResult = false;
+}
+
+bool	Parser::isServerDeclarationLine(std::string line)
+{
+	return (!line.compare("server {") || !line.compare("server{"));
+}
+
+void	Parser::setServerDeclarationLines(void)
+{
+	std::vector<int>	keys;
+	
+	keys = getMapKeysGeneric(this->_fileContent);
+	std::vector<int>::const_iterator it;
+	for (it = keys.begin(); it != keys.end(); ++it)
+	{
+		if (isServerDeclarationLine(this->_fileContent[*it]))
+		{
+			// std::cout << "server on line " << *it << std::endl;
+			this->_serverDeclarationLines.push_back(*it);
+		}
+	}
 }
 
 void	Parser::doParsing(void)
@@ -64,4 +85,5 @@ void	Parser::doParsing(void)
 	checkFileContent();
 	if (this->_checkResult == false)
 		return ;
+	setServerDeclarationLines();
 }

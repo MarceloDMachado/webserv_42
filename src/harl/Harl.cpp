@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 20:46:38 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/11 19:20:57 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/21 13:56:20 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,18 @@ Harl::Harl(std::string msg)
 Harl::Harl(std::string msg, levels level)
 {
 	setMsg(msg);
+	setLevel(level);
+}
+
+Harl::Harl(std::ostringstream& msg)
+{
+	setMsg(msg.str());
+	setLevel(DEBUG);
+}
+
+Harl::Harl(std::ostringstream& msg, levels level)
+{
+	setMsg(msg.str());
 	setLevel(level);
 }
 

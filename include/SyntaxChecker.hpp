@@ -6,14 +6,14 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 17:18:41 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/21 14:02:26 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/21 16:17:32 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SYNTAXCHECKER__HPP
 # define SYNTAXCHECKER__HPP
 
-# include <string>
+# include <cstring>
 # include <sstream>
 # include <algorithm>
 # include <map>
@@ -33,21 +33,23 @@ static std::vector<KeyType> getMapKeysGeneric(const std::map<KeyType, ValueType>
 template <typename KeyType>
 static void	check(std::map<KeyType, std::string> &target, bool (*checker)(std::string))
 {
-	std::ostringstream msg;
-	std::vector<KeyType>	keys = getMapKeysGeneric(target);
+	std::vector<KeyType>	keys;
+	std::ostringstream		msg;
 	
+	keys = getMapKeysGeneric(target);
 	typename std::vector<KeyType>::const_iterator it;
 	for (it = keys.begin(); it != keys.end(); ++it)
 	{
 		if (checker(target[*it]))
 		{
+			msg.str("");
 			msg << "Invalid syntax on line: [" << *it << "] " << " ["<< target[*it] << "]";
 			Harl(msg, ERROR).complain();
 		}
 	}
 }
 
-static bool	checkDuplicatedSpecialTokens(std::string str)
+static bool	hasDuplicatedSpecialTokens(std::string str)
 {
 	int	semicolon;
 	int	openCurly;
@@ -56,9 +58,33 @@ static bool	checkDuplicatedSpecialTokens(std::string str)
 	semicolon = std::count(str.begin(), str.end(), ';');
 	openCurly = std::count(str.begin(), str.end(), '{');
 	closeCurly = std::count(str.begin(), str.end(), '}');
-
+	
 	if (semicolon + openCurly + closeCurly > 1)
+		return (true);
+	return (false);
+}
+
+static const char*	runOverSpaces(const char *str)
+{
+	while (*str && strchr(" \t\r\v\f", *str))
+		str++;
+	return (str);
+}
+
+static bool	isMissingTokens(std::string str)
+{
+	int semicolon;
+	int	openCurly;
+	int closeCurly;
+
+	semicolon = std::count(str.begin(), str.end(), ';');
+	openCurly = std::count(str.begin(), str.end(), '{');
+	closeCurly = std::count(str.begin(), str.end(), '}');
+
+	if (semicolon + openCurly + closeCurly == 0)
 	{
+		if (*runOverSpaces(str.c_str()) == 0)
+			return (false);
 		return (true);
 	}
 	return (false);

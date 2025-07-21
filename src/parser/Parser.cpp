@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 12:18:00 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/21 12:17:26 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/21 16:07:09 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ void	Parser::openFile(void)
 void	Parser::doParsing(void)
 {
 	openFile();
-	check(this->_fileContent, &checkDuplicatedSpecialTokens);
+	check(this->_fileContent, hasDuplicatedSpecialTokens);
+	check(this->_fileContent, isMissingTokens);
 }

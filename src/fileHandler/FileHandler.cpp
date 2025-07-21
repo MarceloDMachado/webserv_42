@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 14:18:09 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/14 16:03:28 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/21 16:23:53 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,13 @@ void	FileHandler::openFile(void)
 	readFile();
 }
 
+static const char*	runOverSpaces(const char *str)
+{
+	while (*str && strchr(" \t\r\v\f", *str))
+		str++;
+	return (str);
+}
+
 void	FileHandler::readFile(void)
 {
 	std::string	line;
@@ -54,8 +61,8 @@ void	FileHandler::readFile(void)
 	line_num = 1;
 	while (std::getline(this->_file, line))
 	{
-		this->_lineByNumberMap.insert(std::make_pair(line_num++, line));
-		Harl(line, DEBUG).complain(); // Remover
+		this->_lineByNumberMap.insert(std::make_pair(line_num++, runOverSpaces(line.c_str())));
+		// Harl(line, DEBUG).complain(); // Remover
 	}
 	this->_file.close();
 }

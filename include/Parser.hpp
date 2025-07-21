@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 12:09:59 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/14 16:05:45 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/21 12:08:45 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,15 @@
 #include <map>
 #include "Harl.hpp"
 #include "define.h"
+#include "SyntaxChecker.hpp"
 #include "FileHandler.hpp"
 
 class Parser
 {
 	private:
 		std::string					_confPath;
-		FileHandler					_confFile;
-		std::map<int, std::string>	_content;
+		FileHandler					_fileHandler;
+		std::map<int, std::string>	_fileContent;
 		void			openFile(void);
 		Parser(void);
 	public:

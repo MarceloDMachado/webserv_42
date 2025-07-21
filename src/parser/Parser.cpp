@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 12:18:00 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/14 16:05:59 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/21 12:17:26 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,12 @@ Parser::~Parser(void) {}
 
 void	Parser::openFile(void)
 {
-	this->_confFile.setPath(this->_confPath);
-	this->_confFile.openFile();
-	this->_content = this->_confFile.getContent();
+	this->_fileHandler.setPath(this->_confPath);
+	this->_fileHandler.openFile();
+	this->_fileContent = this->_fileHandler.getContent();
 }
 void	Parser::doParsing(void)
 {
 	openFile();
+	check(this->_fileContent, &checkDuplicatedSpecialTokens);
 }

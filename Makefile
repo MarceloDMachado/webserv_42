@@ -1,6 +1,5 @@
-W_FLAGS = -Wall -Wextra -Werror -std=c++98
+W_FLAGS = -Wall -Wextra -std=c++98
 NAME = webserver
-# SRC = main.cpp parser/Parser.cpp
 SRC = $(shell find ./src -name '*.cpp')
 SRC_PATH = ./src/
 INC = -I ./inc/

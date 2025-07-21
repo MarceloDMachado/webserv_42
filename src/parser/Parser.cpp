@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 12:18:00 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/21 16:07:09 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/21 17:08:43 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,26 @@ void	Parser::openFile(void)
 	this->_fileHandler.openFile();
 	this->_fileContent = this->_fileHandler.getContent();
 }
+
+void	Parser::checkFileContent(void)
+{
+	bool	(*checkFunctions[])(std::string) = {
+		hasDuplicatedSpecialTokens,
+		isMissingTokens
+	};
+	int		index;
+
+	this->_checkResult = true;
+	index = 0;
+	while (index < 2)
+		if (!check(this->_fileContent, checkFunctions[index++]))
+			this->_checkResult = false;
+}
+
 void	Parser::doParsing(void)
 {
 	openFile();
-	check(this->_fileContent, hasDuplicatedSpecialTokens);
-	check(this->_fileContent, isMissingTokens);
+	checkFileContent();
+	if (this->_checkResult == false)
+		return ;
 }

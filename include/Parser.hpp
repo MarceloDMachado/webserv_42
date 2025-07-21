@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 12:09:59 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/21 12:08:45 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/21 17:01:19 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ class Parser
 		std::string					_confPath;
 		FileHandler					_fileHandler;
 		std::map<int, std::string>	_fileContent;
+		bool						_checkResult;
 		void			openFile(void);
 		Parser(void);
+		void	checkFileContent(void);
 	public:
 		Parser(int argc, char **argv);
 		Parser(const Parser& other);

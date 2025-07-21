@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 17:18:41 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/21 16:17:32 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/21 16:48:41 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,26 @@ static std::vector<KeyType> getMapKeysGeneric(const std::map<KeyType, ValueType>
 }
 
 template <typename KeyType>
-static void	check(std::map<KeyType, std::string> &target, bool (*checker)(std::string))
+static bool	check(std::map<KeyType, std::string> &target, bool (*checker)(std::string))
 {
+	bool					result;
 	std::vector<KeyType>	keys;
 	std::ostringstream		msg;
 	
+	result = true;
 	keys = getMapKeysGeneric(target);
 	typename std::vector<KeyType>::const_iterator it;
 	for (it = keys.begin(); it != keys.end(); ++it)
 	{
 		if (checker(target[*it]))
 		{
+			result = false;
 			msg.str("");
 			msg << "Invalid syntax on line: [" << *it << "] " << " ["<< target[*it] << "]";
 			Harl(msg, ERROR).complain();
 		}
 	}
+	return (result);
 }
 
 static bool	hasDuplicatedSpecialTokens(std::string str)

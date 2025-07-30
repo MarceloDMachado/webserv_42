@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 14:47:41 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/30 16:49:34 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/30 17:17:12 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class Server
 		void						setRoot(std::istringstream& iss);
 		void						setIndex(std::istringstream& iss);
 		void						setErrorPage(std::istringstream& iss);
+		void						handleUnknowKey(std::string key);
 
 	public:
 		std::vector<std::string>	_server_name;

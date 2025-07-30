@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:36:09 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/30 16:51:33 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/30 17:19:59 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,16 @@ void	Server::setDynamicAttribute(std::istringstream &iss)
 	else if (!attribute_key.compare("error_page"))
 		setErrorPage(iss);
 	else
-		Harl("Could not find a key", ERROR).complain();
+		handleUnknowKey(attribute_key);
 }
+
+void	Server::handleUnknowKey(std::string key)
+{
+	if (!key.compare("") || !key.compare("}"))
+		return ;
+	Harl("Could not find the key: [" + key + "]", WARNING).complain();
+}
+
 
 void	Server::setServerName(std::istringstream& iss)
 {

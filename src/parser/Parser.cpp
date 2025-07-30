@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 12:18:00 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/21 17:37:24 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/22 12:37:37 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	Parser::checkFileContent(void)
 
 bool	Parser::isServerDeclarationLine(std::string line)
 {
-	return (!line.compare("server {") || !line.compare("server{"));
+	return (!line.compare("server {") || !line.compare("server{")); //logica burra
 }
 
 void	Parser::setServerDeclarationLines(void)
@@ -73,7 +73,7 @@ void	Parser::setServerDeclarationLines(void)
 	{
 		if (isServerDeclarationLine(this->_fileContent[*it]))
 		{
-			// std::cout << "server on line " << *it << std::endl;
+			std::cout << "server on line " << *it << std::endl;
 			this->_serverDeclarationLines.push_back(*it);
 		}
 	}

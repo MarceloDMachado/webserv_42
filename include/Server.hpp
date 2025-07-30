@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 14:47:41 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/10 15:03:44 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/30 14:52:22 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SERVER__HPP
 
 #include <string>
+#include <sstream>
 #include <vector>
 
 class Server 
@@ -30,6 +31,11 @@ class Server
 		Server(const Server& other);
 		Server&	operator=(const Server& other);
 		~Server(void);
+		void						setServerName(std::istringstream& iss);
+		// void						setListen(std::istringstream iss);
+		// void						setRoot(std::istringstream iss);
+		// void						setIndex(std::istringstream iss);
+		// void						setErrorPage(std::istringstream iss);
 };
 
 #endif

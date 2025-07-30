@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 14:47:41 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/30 15:08:06 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/30 15:15:29 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include "Harl.hpp"
 
 class Server 
 {

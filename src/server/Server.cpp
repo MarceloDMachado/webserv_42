@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:36:09 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/30 15:12:28 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/30 15:22:51 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	Server::setDynamicAttribute(std::istringstream &iss)
 		setIndex(iss);
 	else if (!attribute_key.compare("error_page"))
 		setErrorPage(iss);
+	else
+		Harl("Could not find a key", ERROR).complain();
 }
 
 void	Server::setServerName(std::istringstream& iss)

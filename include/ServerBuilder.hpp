@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 12:57:07 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/30 15:02:22 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/30 15:18:39 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <vector>
 #include <sstream>
 #include "Server.hpp"
+#include "Harl.hpp"
 // #include "Location.hpp"
 
 class ServerBuilder 

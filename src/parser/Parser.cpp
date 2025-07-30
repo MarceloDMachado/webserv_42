@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 12:18:00 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/22 12:37:37 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/30 15:21:42 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,7 @@ void	Parser::setServerDeclarationLines(void)
 	for (it = keys.begin(); it != keys.end(); ++it)
 	{
 		if (isServerDeclarationLine(this->_fileContent[*it]))
-		{
-			std::cout << "server on line " << *it << std::endl;
 			this->_serverDeclarationLines.push_back(*it);
-		}
 	}
 }
 
@@ -86,4 +83,5 @@ void	Parser::doParsing(void)
 	if (this->_checkResult == false)
 		return ;
 	setServerDeclarationLines();
+	ServerBuilder(this->_fileContent, this->_serverDeclarationLines);
 }

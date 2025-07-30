@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 12:57:21 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/30 15:12:35 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/30 15:21:11 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ServerBuilder::buildServer(std::map<int, std::string>& confContent, int cur
 	
 	while (currentLine < finalLine)
 	{
-		std::istringstream iss(confContent[currentLine]);
+		std::istringstream iss(confContent[currentLine++]);
 		server.setDynamicAttribute(iss);
 	}
 }

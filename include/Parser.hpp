@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 12:09:59 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/21 17:32:54 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/30 15:16:53 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "define.h"
 #include "SyntaxChecker.hpp"
 #include "FileHandler.hpp"
+#include "ServerBuilder.hpp"
 
 class Parser
 {

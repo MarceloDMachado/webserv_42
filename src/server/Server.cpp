@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:36:09 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/30 15:22:51 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/30 16:51:33 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,3 +96,14 @@ void	Server::setErrorPage(std::istringstream& iss)
 		this->_error_page.push_back(value);
 }
 
+std::ostream&	operator<<(std::ostream& o, Server const& rhs)
+{
+	o << "Server Description" << std::endl;
+	o << "server_name: " << rhs._server_name[0] << std::endl;
+	o << "listen: " << rhs._listen[0] << std::endl;
+	o << "root: " << rhs._root[0] << std::endl;
+	o << "index: " << rhs._index[0] << std::endl;
+	o << "error_page: " << rhs._error_page[0] << std::endl;
+
+	return (o);
+}

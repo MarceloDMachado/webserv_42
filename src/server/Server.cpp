@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:36:09 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/30 14:56:44 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/30 15:12:28 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,23 @@ Server&	Server::operator=(const Server& other)
 Server::~Server(void)
 {
 	
+}
+
+void	Server::setDynamicAttribute(std::istringstream &iss)
+{
+	std::string	attribute_key;
+
+	iss >> attribute_key;
+	if (!attribute_key.compare("server_name"))
+		setServerName(iss);
+	else if (!attribute_key.compare("listen"))
+		setListen(iss);
+	else if (!attribute_key.compare("root"))
+		setRoot(iss);
+	else if (!attribute_key.compare("index"))
+		setIndex(iss);
+	else if (!attribute_key.compare("error_page"))
+		setErrorPage(iss);
 }
 
 void	Server::setServerName(std::istringstream& iss)

@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 12:57:21 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/30 14:54:36 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/30 15:12:35 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,15 @@ ServerBuilder::ServerBuilder(std::map<int, std::string>& confContent, std::vecto
 	}
 }
 
-void	ServerBuilder::buildServer(std::map<int, std::string>& confContent, int initalLine, int finalLine)
+void	ServerBuilder::buildServer(std::map<int, std::string>& confContent, int currentLine, int finalLine)
 {
 	Server server;
-	std::istringstream iss(confContent[initalLine]);
-	server.setServerName(iss);
+	
+	while (currentLine < finalLine)
+	{
+		std::istringstream iss(confContent[currentLine]);
+		server.setDynamicAttribute(iss);
+	}
 }
 
 std::map<std::string, Server>	ServerBuilder::getServers(void) const

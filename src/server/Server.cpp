@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:36:09 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/30 17:19:59 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/01 10:08:23 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,14 +104,40 @@ void	Server::setErrorPage(std::istringstream& iss)
 		this->_error_page.push_back(value);
 }
 
+std::vector<std::string>	Server::getServerName(void) const
+{
+	return (this->_server_name);
+}
+
+std::vector<std::string>	Server::getListen(void) const
+{
+	return (this->_listen);
+}
+
+std::vector<std::string>	Server::getRoot(void) const
+{
+	return (this->_root);
+}
+
+std::vector<std::string>	Server::getIndex(void) const
+{
+	return (this->_index);
+}
+
+std::vector<std::string>	Server::getErrorPage(void) const
+{
+	return (this->_error_page);
+}
+
+
 std::ostream&	operator<<(std::ostream& o, Server const& rhs)
 {
 	o << "Server Description" << std::endl;
-	o << "server_name: " << rhs._server_name[0] << std::endl;
-	o << "listen: " << rhs._listen[0] << std::endl;
-	o << "root: " << rhs._root[0] << std::endl;
-	o << "index: " << rhs._index[0] << std::endl;
-	o << "error_page: " << rhs._error_page[0] << std::endl;
+	o << "server_name: " << rhs.getServerName()[0] << std::endl;
+	o << "listen: " << rhs.getListen()[0] << std::endl;
+	o << "root: " << rhs.getRoot()[0] << std::endl;
+	o << "index: " << rhs.getIndex()[0] << std::endl;
+	o << "error_page: " << rhs.getErrorPage()[0] << std::endl;
 
 	return (o);
 }

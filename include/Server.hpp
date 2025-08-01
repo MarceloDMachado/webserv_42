@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 14:47:41 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/01 10:07:44 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/01 10:17:08 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ class Server
 		void						setIndex(std::istringstream& iss);
 		void						setErrorPage(std::istringstream& iss);
 		void						handleUnknowKey(std::string key);
+		std::string					removeExtraChar(std::string value, char c);
 
 	public:
 		Server(void);

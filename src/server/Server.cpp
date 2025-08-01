@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:36:09 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/01 10:08:23 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/01 10:38:46 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,20 @@ void	Server::handleUnknowKey(std::string key)
 	Harl("Could not find the key: [" + key + "]", WARNING).complain();
 }
 
+std::string	Server::removeExtraChar(std::string value, char c)
+{
+	if (value.find(c) == std::string::npos)
+		return (value);
+	value.at(value.find(c)) = 0;
+	return (value);
+}
 
 void	Server::setServerName(std::istringstream& iss)
 {
 	std::string	value;
 	
 	while (iss >> value)
-		this->_server_name.push_back(value);
+		this->_server_name.push_back(removeExtraChar(value, ';'));
 }
 
 void	Server::setListen(std::istringstream& iss)
@@ -77,7 +84,7 @@ void	Server::setListen(std::istringstream& iss)
 	std::string	value;
 	
 	while (iss >> value)
-		this->_listen.push_back(value);
+		this->_listen.push_back(removeExtraChar(value, ';'));
 }
 
 void	Server::setRoot(std::istringstream& iss)
@@ -85,7 +92,7 @@ void	Server::setRoot(std::istringstream& iss)
 	std::string	value;
 
 	while (iss >> value)
-		this->_root.push_back(value);
+		this->_root.push_back(removeExtraChar(value, ';'));
 }
 
 void	Server::setIndex(std::istringstream& iss)
@@ -93,7 +100,7 @@ void	Server::setIndex(std::istringstream& iss)
 	std::string	value;
 
 	while (iss >> value)
-		this->_index.push_back(value);
+		this->_index.push_back(removeExtraChar(value, ';'));
 }
 
 void	Server::setErrorPage(std::istringstream& iss)
@@ -101,7 +108,7 @@ void	Server::setErrorPage(std::istringstream& iss)
 	std::string	value;
 
 	while (iss >> value)
-		this->_error_page.push_back(value);
+		this->_error_page.push_back(removeExtraChar(value, ';'));
 }
 
 std::vector<std::string>	Server::getServerName(void) const

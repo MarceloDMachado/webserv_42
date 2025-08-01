@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 14:18:09 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/21 16:23:53 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/01 10:29:13 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void	FileHandler::openFile(void)
 	this->_file.open(this->_path.c_str());
 	if (!this->_file.is_open())
 		Harl("Could not open the file [_path]", ERROR).complain();
-	readFile();
+	else
+		readFile();
 }
 
 static const char*	runOverSpaces(const char *str)

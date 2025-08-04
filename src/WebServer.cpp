@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:45:02 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/04 18:05:01 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/04 18:46:55 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ void		WebServer::initServers(void)
 	std::vector<Server>::iterator it;
 	for (it = this->_servers.begin(); it != this->_servers.end(); ++it)
 	{
-		Harl("ueh", DEBUG).complain();
-		// it->init();
+		it->init();
 	}
 }
 

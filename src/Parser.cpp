@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 12:18:00 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/04 15:13:52 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/04 18:46:25 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	Parser::doParsing(void)
 	if (this->_checkResult == false)
 		return ;
 	setServerDeclarationLines();
-	ServerBuilder(this->_fileContent, this->_serverDeclarationLines).getServers();
+	this->_servers = ServerBuilder(this->_fileContent, this->_serverDeclarationLines).getServers();
 }
 
 std::vector<Server>	Parser::getServers(void) const

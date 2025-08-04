@@ -6,11 +6,11 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 14:18:09 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/01 10:29:13 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/04 14:43:20 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/FileHandler.hpp"
+#include "../include/FileHandler.hpp"
 
 FileHandler::FileHandler(void){}
 

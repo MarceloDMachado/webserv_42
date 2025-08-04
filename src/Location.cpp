@@ -6,11 +6,11 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 12:43:28 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/04 13:33:31 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/04 14:43:31 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/Location.hpp"
+#include "../include/Location.hpp"
 
 Location::Location(void)
 {
@@ -57,17 +57,16 @@ unsigned int	getMultiplier(std::string value)
 
 void	Location::setClientMaxSizeBody(std::string value)
 {
-	setClientMaxSizeBody(atoi(value.c_str()) * getMultiplier(value));
+	setClientMaxSizeBody(atoi(value.c_str()) * getMultiplier(value)); //Adicionar tratativa de overflow
 }
 
 void	Location::setClientMaxSizeBody(unsigned int value)
 {
-	std::ostringstream	msg;
-	
 	this->_client_max_size_body = value;
 	
-	msg.str("");
-	msg << "value: ";
-	msg << value;
-	Harl(msg, INFO).complain();
+	// std::ostringstream	msg;
+	// msg.str("");
+	// msg << "value: ";
+	// msg << value;
+	// Harl(msg, INFO).complain();
 }

@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 12:57:21 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/04 13:34:32 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/04 14:43:49 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ ServerBuilder::ServerBuilder(std::map<int, std::string>& confContent, std::vecto
 			next = (--(confContent.end()))->first;
 		buildServer(confContent, *it + 1, next);
 	}
-	std::cout << this->_servers[0] << std::endl;
+	// std::cout << this->_servers[0] << std::endl;
 	// std::cout << this->_servers[1] << std::endl;
 	// std::cout << this->_servers[2] << std::endl;
 }

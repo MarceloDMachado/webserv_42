@@ -6,11 +6,11 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 12:18:00 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/30 15:21:42 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/04 14:43:37 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/Parser.hpp"
+#include "../include/Parser.hpp"
 
 Parser::Parser(void):_confPath(DEFAULT_CONFIG){}
 

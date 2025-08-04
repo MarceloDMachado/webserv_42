@@ -6,11 +6,11 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 20:46:38 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/21 13:56:20 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/04 14:43:25 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/Harl.hpp"
+#include "../include/Harl.hpp"
 
 Harl::Harl(std::string msg)
 {

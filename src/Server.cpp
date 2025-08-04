@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:36:09 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/04 14:43:44 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/04 18:03:34 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,19 @@ std::vector<std::string>	Server::getErrorPage(void) const
 void						Server::setLocation(Location location)
 {
 	this->_locations.push_back(location);
+}
+
+void						Server::init(void)
+{
+	struct sockaddr_in address;
+	
+	Harl("server init", DEBUG).complain();
+	address.sin_family = AF_INET;
+	address.sin_addr.s_addr = inet_addr("127.0.0.1"); // verificar se eh func permitida
+	address.sin_port = htons(atoi(_listen[0].c_str())); // implementar para multiplas portas
+	this->_fd = socket(AF_INET, SOCK_STREAM, 0);
+	bind(this->_fd, (struct sockaddr *)&address, sizeof(address)); // incluir tratativa de erro
+	listen(this->_fd, 10); // inclur tratativa de erro
 }
 
 

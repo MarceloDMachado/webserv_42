@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 12:09:59 by madias-m          #+#    #+#             */
-/*   Updated: 2025/07/30 15:16:53 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/04 15:14:01 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <string>
 #include <map>
+#include <vector>
 #include "Harl.hpp"
 #include "define.h"
 #include "SyntaxChecker.hpp"
@@ -29,18 +30,19 @@ class Parser
 		std::map<int, std::string>	_fileContent;
 		bool						_checkResult;
 		std::vector<int>			_serverDeclarationLines;
+		std::vector<Server>			_servers;
 		void						openFile(void);
 		Parser(void);
 		void						checkFileContent(void);
 		void						setServerDeclarationLines(void);
 		bool						isServerDeclarationLine(std::string line);
-
 	public:
 		Parser(int argc, char **argv);
 		Parser(const Parser& other);
 		~Parser(void);
 		Parser&						operator=(const Parser& other);
 		void						doParsing(void);
+		std::vector<Server>			getServers(void) const;
 };
 
 #endif

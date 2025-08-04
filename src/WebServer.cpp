@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:45:02 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/04 14:55:19 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/04 15:13:20 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,3 +36,12 @@ WebServer&	WebServer::operator=(const WebServer& other)
 	return (*this);
 }
 
+void		WebServer::setServers(std::vector<Server> servers)
+{
+	this->_servers = servers;
+}
+
+void		WebServer::run(void)
+{
+	Harl("Server is running!!!", INFO).complain();
+}

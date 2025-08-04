@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 12:57:21 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/01 10:26:31 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/04 13:34:32 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,16 @@ ServerBuilder::ServerBuilder(std::map<int, std::string>& confContent, std::vecto
 void	ServerBuilder::buildServer(std::map<int, std::string>& confContent, int currentLine, int finalLine)
 {
 	Server server;
+	Location genericLocation;
 	
 	while (currentLine < finalLine)
 	{
 		std::istringstream iss(confContent[currentLine++]);
 		server.setDynamicAttribute(iss);
 	}
+	genericLocation.setAutoIndex("on");
+	genericLocation.setClientMaxSizeBody("1g");
+	server.setLocation(genericLocation);
 	this->_servers.push_back(server);
 }
 

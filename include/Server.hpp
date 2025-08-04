@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 14:47:41 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/01 10:17:08 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/04 13:30:39 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <sstream>
 #include <vector>
 #include "Harl.hpp"
+#include "Location.hpp"
 
 class Server 
 {
@@ -26,7 +27,7 @@ class Server
 		std::vector<std::string>	_root;
 		std::vector<std::string>	_index;
 		std::vector<std::string>	_error_page;
-		//std::vector<Location>		_locations;
+		std::vector<Location>		_locations;
 		void						setServerName(std::istringstream& iss);
 		void						setListen(std::istringstream& iss);
 		void						setRoot(std::istringstream& iss);
@@ -46,6 +47,7 @@ class Server
 		std::vector<std::string>	getRoot(void) const;
 		std::vector<std::string>	getIndex(void) const;
 		std::vector<std::string>	getErrorPage(void) const;
+		void						setLocation(Location Location);
 };
 
 std::ostream&	operator<<(std::ostream& o, Server const& rhs);

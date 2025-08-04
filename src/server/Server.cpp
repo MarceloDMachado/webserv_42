@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:36:09 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/01 10:38:46 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/04 13:31:18 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,11 @@ std::vector<std::string>	Server::getIndex(void) const
 std::vector<std::string>	Server::getErrorPage(void) const
 {
 	return (this->_error_page);
+}
+
+void						Server::setLocation(Location location)
+{
+	this->_locations.push_back(location);
 }
 
 

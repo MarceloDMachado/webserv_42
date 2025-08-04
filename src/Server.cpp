@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:36:09 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/04 19:52:13 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/04 20:11:26 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,14 +146,14 @@ void						Server::init(void)
 	int fd;
 	
 	std::vector<std::string>::const_iterator it;
-	for (it = getListen().begin(); it != getListen().end(); ++it)
+	for (it = this->_listen.begin(); it != this->_listen.end(); ++it)
 	{
 		struct sockaddr_in address;
 		
 		address.sin_family = AF_INET;
 		address.sin_addr.s_addr = inet_addr("127.0.0.1");
 		address.sin_port = htons(atoi(it->c_str()));
-		
+
 		fd = socket(AF_INET, SOCK_STREAM, 0);
 		bind(fd, (struct sockaddr *) &address, sizeof(address));
 		listen(fd, 10);

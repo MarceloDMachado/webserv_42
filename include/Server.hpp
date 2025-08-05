@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 14:47:41 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/05 11:59:46 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/05 14:43:41 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <netinet/in.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
+#include <unistd.h>
 #include "Harl.hpp"
 #include "Location.hpp"
 
@@ -54,6 +55,7 @@ class Server
 		std::vector<std::string>	getErrorPage(void) const;
 		void						setLocation(Location Location);
 		void						init(void);
+		void						stop(void);
 };
 
 std::ostream&	operator<<(std::ostream& o, Server const& rhs);

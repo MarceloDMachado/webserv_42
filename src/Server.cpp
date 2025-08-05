@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:36:09 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/05 12:54:21 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/05 14:43:45 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,13 @@ void						Server::init(void)
 		
 		this->_address_by_fd.insert(std::make_pair(server_fd, address));
 	}
+}
+
+void						Server::stop(void)
+{
+	std::map<int, sockaddr_in>::const_iterator it;
+	for (it = this->_address_by_fd.begin(); it != this->_address_by_fd.end(); ++it)
+		close(it->first);
 }
 
 

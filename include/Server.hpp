@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 14:47:41 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/04 19:35:00 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/05 11:59:46 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ class Server
 		std::vector<std::string>	_index;
 		std::vector<std::string>	_error_page;
 		std::vector<Location>		_locations;
-		std::map<int, sockaddr_in>	_address_by_fd;
 		void						setServerName(std::istringstream& iss);
 		void						setListen(std::istringstream& iss);
 		void						setRoot(std::istringstream& iss);
@@ -40,8 +39,9 @@ class Server
 		void						setErrorPage(std::istringstream& iss);
 		void						handleUnknowKey(std::string key);
 		std::string					removeExtraChar(std::string value, char c);
-
+		
 	public:
+		std::map<int, sockaddr_in>	_address_by_fd;
 		Server(void);
 		Server(const Server& other);
 		Server&	operator=(const Server& other);

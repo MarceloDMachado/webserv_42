@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 13:30:00 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/04 17:15:07 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/05 11:42:33 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ int	main(int argc, char **argv)
 		webserver.setServers(parser.getServers());
 	}
 	webserver.init();
+	webserver.run();
 	return (0);
 }

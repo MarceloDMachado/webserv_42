@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:45:12 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/04 17:57:34 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/05 12:20:54 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <string>
 #include <vector>
+#include <unistd.h> //remover;
+#include <cstring> // remover;
 #include "Harl.hpp"
 #include "Server.hpp"
 
@@ -22,6 +24,7 @@ class WebServer
 {
 	private:
 		std::vector<Server>	_servers;
+		void				clientTCP(void);
 	public:
 		WebServer(void);
 		WebServer(std::vector<Server> servers);
@@ -30,6 +33,7 @@ class WebServer
 		void		setServers(std::vector<Server> servers);
 		void		init(void);
 		void		initServers(void);
+		void		run(void);
 };
 
 #endif

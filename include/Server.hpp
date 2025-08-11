@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 14:47:41 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/05 14:43:41 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/11 16:16:25 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Server
 {
 	private:
 		std::vector<std::string>	_server_name;
-		std::vector<std::string>	_listen;
+		std::vector<int>			_listen;
 		std::vector<std::string>	_root;
 		std::vector<std::string>	_index;
 		std::vector<std::string>	_error_page;
@@ -49,7 +49,7 @@ class Server
 		~Server(void);
 		void						setDynamicAttribute(std::istringstream& iss);
 		std::vector<std::string>	getServerName(void) const;
-		std::vector<std::string>	getListen(void) const;
+		std::vector<int>			getListen(void) const;
 		std::vector<std::string>	getRoot(void) const;
 		std::vector<std::string>	getIndex(void) const;
 		std::vector<std::string>	getErrorPage(void) const;

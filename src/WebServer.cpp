@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:45:02 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/05 16:33:41 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/11 17:28:25 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,64 @@ void		WebServer::init(void)
 	initServers();
 }
 
+std::vector<int>	getPorts(std::vector<Server>& servers)
+{
+	std::vector<int> allPorts;
+	
+	std::vector<Server>::const_iterator it;
+	for (it = servers.begin(); it != servers.end(); ++it)
+	{
+		std::vector<int> itPorts = it->getListen();
+		std::vector<int>::const_iterator port;
+		for (port = itPorts.begin(); port != itPorts.end(); ++port)
+			allPorts.push_back(*port);
+	}
+	return (allPorts);
+}
+
+std::vector<int>	getServerFds(std::vector<Server>& servers)
+{
+	std::vector<int> allFds;
+	
+	std::vector<Server>::const_iterator it;
+	for (it = servers.begin(); it != servers.end(); ++it)
+	{
+		std::vector<int> itFds = getMapKeysGeneric(it->_address_by_fd);
+		std::vector<int>::const_iterator fd;
+		for (fd = itFds.begin(); fd != itFds.end(); ++fd)
+			allFds.push_back(*fd);
+	}
+	return (allFds);
+}
+
+void		WebServer::execute(void)
+{
+	fd_set				read_fds;
+	fd_set				write_fds;
+	std::vector<int>	client_sockets;
+	std::vector<int>	ports = getPorts(this->_servers);
+	std::vector<int>	serverFds = getServerFds(this->_servers);
+	
+	while (1)
+	{
+		FD_ZERO(&read_fds);
+		FD_ZERO(&write_fds);
+
+		std::vector<int>::const_iterator serverFD;
+		for (serverFD = serverFds.begin(); serverFD != serverFds.end(); ++serverFD)
+			FD_SET(*serverFD, &read_fds);
+		
+		std::vector<int>::const_iterator client_socket;
+		for (client_socket = client_sockets.begin(); client_socket != client_sockets.end(); ++client_socket)
+		{
+			FD_SET(*client_socket, &read_fds);
+			FD_SET(*client_socket, &write_fds);
+		}
+		
+		
+	}
+}
+
 void		WebServer::clientTCP(void)
 {
 	struct sockaddr_in	client_address;
@@ -81,5 +139,6 @@ void		WebServer::clientTCP(void)
 
 void		WebServer::run(void)
 {
-	clientTCP();
+	// clientTCP();
+	execute();
 }

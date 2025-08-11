@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:45:12 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/05 14:45:26 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/11 16:56:40 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <vector>
 #include <unistd.h> //remover;
 #include <cstring> // remover;
+#include "SyntaxChecker.hpp";
 #include "Harl.hpp"
 #include "Server.hpp"
 
@@ -35,6 +36,7 @@ class WebServer
 		void		initServers(void);
 		void		run(void);
 		void		stopServers(void);
+		void		execute(void);
 };
 
 #endif

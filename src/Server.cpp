@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:36:09 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/05 14:43:45 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/11 16:16:58 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	Server::setListen(std::istringstream& iss)
 	std::string	value;
 	
 	while (iss >> value)
-		this->_listen.push_back(removeExtraChar(value, ';'));
+		this->_listen.push_back(atoi(value.c_str()));
 }
 
 void	Server::setRoot(std::istringstream& iss)
@@ -116,7 +116,7 @@ std::vector<std::string>	Server::getServerName(void) const
 	return (this->_server_name);
 }
 
-std::vector<std::string>	Server::getListen(void) const
+std::vector<int>	Server::getListen(void) const
 {
 	return (this->_listen);
 }
@@ -145,14 +145,14 @@ void						Server::init(void)
 {
 	int server_fd;
 	
-	std::vector<std::string>::const_iterator it;
+	std::vector<int>::const_iterator it;
 	for (it = this->_listen.begin(); it != this->_listen.end(); ++it)
 	{
 		struct sockaddr_in address;
 		
 		address.sin_family = AF_INET;
 		address.sin_addr.s_addr = inet_addr("127.0.0.1");
-		address.sin_port = htons(atoi(it->c_str()));
+		address.sin_port = htons(*it);
 
 		server_fd = socket(AF_INET, SOCK_STREAM, 0);
 		bind(server_fd, (struct sockaddr *) &address, sizeof(address));

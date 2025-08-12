@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:45:12 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/11 16:56:40 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/12 12:19:57 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 #include <string>
 #include <vector>
-#include <unistd.h> //remover;
-#include <cstring> // remover;
-#include "SyntaxChecker.hpp";
+#include <unistd.h> //remover
+#include <cstring> // remover
+#include <algorithm>
+#include "SyntaxChecker.hpp"
 #include "Harl.hpp"
 #include "Server.hpp"
 

@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:45:02 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/11 17:28:25 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/12 13:21:03 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void		WebServer::execute(void)
 	fd_set				write_fds;
 	std::vector<int>	client_sockets;
 	std::vector<int>	ports = getPorts(this->_servers);
-	std::vector<int>	serverFds = getServerFds(this->_servers);
+	std::vector<int>	server_sockets = getServerFds(this->_servers);
 	
 	while (1)
 	{
@@ -105,7 +105,7 @@ void		WebServer::execute(void)
 		FD_ZERO(&write_fds);
 
 		std::vector<int>::const_iterator serverFD;
-		for (serverFD = serverFds.begin(); serverFD != serverFds.end(); ++serverFD)
+		for (serverFD = server_sockets.begin(); serverFD != server_sockets.end(); ++serverFD)
 			FD_SET(*serverFD, &read_fds);
 		
 		std::vector<int>::const_iterator client_socket;
@@ -115,7 +115,38 @@ void		WebServer::execute(void)
 			FD_SET(*client_socket, &write_fds);
 		}
 		
-		
+		int max_fd = 0;
+		for (char i = 0; i < server_sockets.size(); ++i)
+			max_fd = std::max(max_fd, server_sockets[i]);
+		for (char i = 0; i < client_sockets.size(); ++i)
+			max_fd = std::max(max_fd, client_sockets[i]);
+
+		struct timeval timeout;
+		timeout.tv_sec = 1;
+		timeout.tv_usec = 0;
+
+		int ready = select(max_fd + 1, &read_fds, &write_fds, NULL, &timeout);
+
+		if (ready < 0)
+			std::cout << "deu ruim no select\n";
+
+		if (ready == 0)
+			std::cout << "timeout: no activities" << std::endl;
+
+		for (char i = 0; i < server_sockets.size(); ++i)
+		{
+			if (FD_ISSET(server_sockets[i], &read_fds))
+			{
+				struct sockaddr_in	client_address;
+				socklen_t			socket_len = sizeof(client_address);
+
+				int client_socket = accept(server_sockets[i], (struct sockaddr*) &client_address, &socket_len);
+				
+				std::cout << "New client connected on: " << ports[i] << std::endl;
+				close(client_socket);
+				// client_sockets.push_back(client_socket);
+			}
+		}
 	}
 }
 
@@ -139,6 +170,6 @@ void		WebServer::clientTCP(void)
 
 void		WebServer::run(void)
 {
-	// clientTCP();
+	//clientTCP();
 	execute();
 }

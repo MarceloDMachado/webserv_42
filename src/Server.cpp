@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:36:09 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/11 16:16:58 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/12 13:31:48 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ void						Server::init(void)
 		struct sockaddr_in address;
 		
 		address.sin_family = AF_INET;
-		address.sin_addr.s_addr = inet_addr("127.0.0.1");
+		address.sin_addr.s_addr = inet_addr("0.0.0.0");
 		address.sin_port = htons(*it);
 
 		server_fd = socket(AF_INET, SOCK_STREAM, 0);

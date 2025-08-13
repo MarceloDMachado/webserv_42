@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:45:02 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/13 15:50:19 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/13 15:52:59 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,7 +193,7 @@ void		WebServer::execute(void)
 					write(client_sockets[i], response, strlen(response));
 					if (1) // Verificar se deve manter a conexao
 					{
-						std::cout << "Client disconnected2\n";
+						std::cout << "Closing client connection\n"; // elaborar mensagem utilizando o client_address
 						close(client_sockets[i]);
 						client_sockets.erase(client_sockets.begin() + i);
 					}

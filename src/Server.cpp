@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:36:09 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/12 13:31:48 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/13 13:44:27 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,8 +155,19 @@ void						Server::init(void)
 		address.sin_port = htons(*it);
 
 		server_fd = socket(AF_INET, SOCK_STREAM, 0);
-		bind(server_fd, (struct sockaddr *) &address, sizeof(address));
-		listen(server_fd, 10);
+		if (server_fd < 0)
+		{
+			std::cout << "ERROR: Failed to get socket for : " << *it << std::endl; 
+		}
+		
+		if (bind(server_fd, (struct sockaddr *) &address, sizeof(address)) < 0)
+		{
+			std::cout << "ERROR: Failed to bind port: " << *it << std::endl; 
+		}
+		if (listen(server_fd, 10) < 0)
+		{
+			std::cout << "ERROR: Failed to listen port: " << *it << std::endl;
+		}
 		
 		this->_address_by_fd.insert(std::make_pair(server_fd, address));
 	}

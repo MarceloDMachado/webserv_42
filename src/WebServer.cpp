@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:45:02 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/13 15:52:59 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/13 16:13:36 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,6 @@ void		WebServer::execute(void)
 		{
 			if (FD_ISSET(client_sockets[i], &read_fds))
 			{
-				
 				char buffer[1024]; // alterar para max_body_size
 				size_t bytes = read(client_sockets[i], buffer, sizeof(buffer));
 				
@@ -191,7 +190,7 @@ void		WebServer::execute(void)
 					// elaborar RESPONSE e devolver para o client
 					const char *response = "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\nHello from server!";
 					write(client_sockets[i], response, strlen(response));
-					if (1) // Verificar se deve manter a conexao
+					if (1) // utlizar o Keep-Alive para verificar se eh possivel fechar o socket do client
 					{
 						std::cout << "Closing client connection\n"; // elaborar mensagem utilizando o client_address
 						close(client_sockets[i]);

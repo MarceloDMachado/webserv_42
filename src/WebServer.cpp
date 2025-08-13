@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:45:02 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/13 16:13:36 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/13 16:50:42 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,7 +185,7 @@ void		WebServer::execute(void)
 				else
 				{
 					// redirecionar buffer para tratamento de REQUESTS
-					std::cout << "Data received from client: " << std::string(buffer, bytes) << std::endl;
+					std::cout << "Data received from client: \n" << std::string(buffer, bytes) << std::endl;
 					
 					// elaborar RESPONSE e devolver para o client
 					const char *response = "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\nHello from server!";

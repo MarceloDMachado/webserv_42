@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:45:02 by madias-m          #+#    #+#             */
-/*   Updated: 2025/08/13 15:49:03 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/08/13 15:50:19 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,7 +179,7 @@ void		WebServer::execute(void)
 				if (bytes <= 0)
 				{
 					std::cout << "Client disconnected\n";
-					close(client_socket[i]);
+					close(client_sockets[i]);
 					client_sockets.erase(client_sockets.begin() + i);
 					continue ;
 				}
